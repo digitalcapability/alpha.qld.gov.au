@@ -130,8 +130,31 @@
     return details;
   }
 
+  function pruneLegacyNavigation(main) {
+    var legacyNavBlocks = Array.prototype.slice.call(main.querySelectorAll(".intro-nav"));
+
+    legacyNavBlocks.forEach(function (block) {
+      block.remove();
+    });
+  }
+
+  function findLayoutHost(main) {
+    var pageLayout = main.querySelector(":scope > .container.page-layout");
+    if (pageLayout) return pageLayout;
+
+    var directChildren = Array.prototype.slice.call(main.children).filter(function (child) {
+      return child.tagName !== "SCRIPT";
+    });
+
+    if (directChildren.length === 1 && directChildren[0].classList.contains("container")) {
+      return directChildren[0];
+    }
+
+    return main;
+  }
+
   function wrapContent(main, sideNav) {
-    var host = main.querySelector(":scope > .container.page-layout") || main.querySelector(":scope > .container") || main;
+    var host = findLayoutHost(main);
     if (!host) return null;
 
     var contentNode = host.querySelector(":scope > .page-body");
@@ -166,13 +189,45 @@
     return layout;
   }
 
+  function setupDisclosureState(navRoot) {
+    var desktopMedia = window.matchMedia("(min-width: 861px)");
+
+    function syncState() {
+      if (desktopMedia.matches) {
+        navRoot.open = true;
+      }
+    }
+
+    navRoot.addEventListener("toggle", function () {
+      if (desktopMedia.matches && !navRoot.open) {
+        navRoot.open = true;
+      }
+    });
+
+    syncState();
+
+    if (typeof desktopMedia.addEventListener === "function") {
+      desktopMedia.addEventListener("change", syncState);
+      return;
+    }
+
+    desktopMedia.addListener(syncState);
+  }
+
+  function openTargetDetails(id) {
+    if (!id) return;
+
+    var target = document.getElementById(id);
+    if (!target) return;
+
+    var parentDetails = target.closest("details");
+    if (parentDetails) {
+      parentDetails.open = true;
+    }
+  }
+
   function setupActiveState(navRoot, entries) {
     var links = Array.prototype.slice.call(navRoot.querySelectorAll("a[data-target-id]"));
-    var byId = new Map();
-
-    links.forEach(function (link) {
-      byId.set(link.getAttribute("data-target-id"), link);
-    });
 
     function setActive(id) {
       links.forEach(function (link) {
@@ -221,9 +276,28 @@
     setActive(headingElements[0].id);
   }
 
+  function setupNavigationBehaviour(navRoot) {
+    navRoot.addEventListener("click", function (event) {
+      var link = event.target.closest("a[data-target-id]");
+      if (!link) return;
+
+      openTargetDetails(link.getAttribute("data-target-id"));
+    });
+
+    if (window.location.hash) {
+      openTargetDetails(window.location.hash.slice(1));
+    }
+
+    window.addEventListener("hashchange", function () {
+      openTargetDetails(window.location.hash.slice(1));
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var main = document.querySelector("main#main-content, main");
     if (!main) return;
+
+    pruneLegacyNavigation(main);
 
     var entries = buildEntries(main);
     if (entries.length < 1) return;
@@ -232,6 +306,8 @@
     var layout = wrapContent(main, nav);
     if (!layout) return;
 
+    setupDisclosureState(nav);
+    setupNavigationBehaviour(nav);
     setupActiveState(nav, entries);
   });
 })();
