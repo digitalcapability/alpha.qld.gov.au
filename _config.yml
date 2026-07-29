@@ -1,0 +1,11 @@
+title: Queensland Government Digital Capability Hub
+url: "https://digitalcapability.github.io"
+baseurl: "/qld.gov.au"
+
+# Keep permalink structure simple for Pages
+permalink: pretty
+
+# Exclude build cache and site output
+exclude:
+  - .jekyll-cache
+  - _site
