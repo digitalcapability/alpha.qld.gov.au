@@ -327,6 +327,99 @@ main .container,
   margin-bottom: 1.5rem;
 }
 
+.otp-layout {
+  display: grid;
+  grid-template-columns: 14.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.otp-layout-root {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+}
+
+.otp-content {
+  min-width: 0;
+}
+
+.on-this-page {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+}
+
+.on-this-page summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+  color: var(--heading);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.on-this-page summary::-webkit-details-marker {
+  display: none;
+}
+
+.on-this-page summary::after {
+  content: '▼';
+  font-size: 0.75rem;
+  color: var(--heading);
+}
+
+.on-this-page[open] summary::after {
+  content: '▲';
+}
+
+.on-this-page-nav {
+  padding: 0.35rem 0;
+}
+
+.on-this-page-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.on-this-page-nav li {
+  margin: 0;
+}
+
+.on-this-page-nav li.is-subheading a {
+  padding-left: 1.35rem;
+}
+
+.on-this-page-nav a {
+  display: block;
+  color: var(--link);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  border-left: 3px solid transparent;
+}
+
+.on-this-page-nav a:hover,
+.on-this-page-nav a:focus {
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+.on-this-page-nav a.is-active {
+  color: var(--heading);
+  font-weight: 700;
+  border-left-color: var(--link);
+  background: #f7f9fc;
+}
+
 .button-row.compact {
   gap: 0.5rem;
   margin-top: 0;
@@ -659,7 +752,30 @@ main .container,
 }
 
 @media (max-width: 860px) {
+  .otp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .on-this-page {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .on-this-page:not([open]) .on-this-page-nav {
+    display: none;
+  }
+
   .steps-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 861px) {
+  .on-this-page summary {
+    cursor: default;
+  }
+
+  .on-this-page summary::after {
+    content: '';
   }
 }
