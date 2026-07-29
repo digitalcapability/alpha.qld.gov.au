@@ -1,0 +1,37 @@
+name: Jekyll asset path CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Build site
+        run: bundle exec jekyll build --destination _site
+
+      - name: Validate generated asset links
+        run: |
+          set -e
+          bad=$(grep -R -En "href=\"/(assets|framework|assessment|resources|about|contact)|src=\"/assets|@import url\(\"/assets" _site || true)
+          if [ -n "$bad" ]; then
+            echo "Found root-relative asset/internal links in generated site:"
+            echo "$bad"
+            exit 1
+          fi
