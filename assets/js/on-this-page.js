@@ -57,6 +57,7 @@
     h2s.forEach(function (h2) {
       if (h2.closest(".on-this-page")) return;
       if (introPanel && h2.closest(".intro-panel")) return;
+      if (h2.closest(".resource-card")) return;
 
       var label = (h2.textContent || "").trim();
       if (!label) return;
@@ -78,11 +79,6 @@
         var id = ensureId(h3, usedIds);
         entries.push(createEntry(label, id, 3));
       });
-    }
-
-    var outsideResourcesHeading = document.querySelector("section.resources-panel h2");
-    if (outsideResourcesHeading && !main.contains(outsideResourcesHeading)) {
-      entries.push(createEntry((outsideResourcesHeading.textContent || "").trim(), ensureId(outsideResourcesHeading, usedIds), 2));
     }
 
     var unique = [];
@@ -153,37 +149,18 @@
     return main;
   }
 
-  function findSidebarResources(contentNode) {
-    if (!contentNode) return null;
-
-    var headingOrder = [
-      "policies and guidance",
-      "official framework sources",
-      "continue developing your capability"
-    ];
-
-    var sections = Array.prototype.slice.call(contentNode.querySelectorAll(":scope > section.framework-section"));
-
-    return (
-      sections.find(function (section) {
-        var cards = Array.prototype.slice.call(section.querySelectorAll(":scope > .card-grid > .resource-card"));
-        if (cards.length !== 3) return false;
-
-        var headings = cards.map(function (card) {
-          var heading = card.querySelector("h2");
-          return heading ? (heading.textContent || "").trim().toLowerCase() : "";
-        });
-
-        return headingOrder.every(function (label, index) {
-          return headings[index] === label;
-        });
-      }) || null
-    );
-  }
-
   function wrapContent(main, sideNav) {
     var host = findLayoutHost(main);
     if (!host) return null;
+
+    var existingLayout = host.querySelector(":scope > .otp-layout");
+    if (existingLayout) {
+      var existingSidebar = existingLayout.querySelector(":scope > .otp-sidebar");
+      if (existingSidebar) {
+        existingSidebar.insertBefore(sideNav, existingSidebar.firstChild);
+        return existingLayout;
+      }
+    }
 
     var contentNode = host.querySelector(":scope > .page-body");
     var layout = document.createElement("div");
@@ -198,12 +175,6 @@
     contentWrapper.className = "otp-content";
 
     if (contentNode) {
-      var resourcesSection = findSidebarResources(contentNode);
-      if (resourcesSection) {
-        resourcesSection.remove();
-        sidebar.appendChild(resourcesSection);
-      }
-
       contentNode.parentNode.insertBefore(layout, contentNode);
       layout.appendChild(sidebar);
       layout.appendChild(contentWrapper);
