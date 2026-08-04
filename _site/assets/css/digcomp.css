@@ -334,6 +334,16 @@ main .container,
   align-items: start;
 }
 
+.otp-sidebar {
+  width: 100%;
+  max-width: 16rem;
+  align-self: start;
+}
+
+.otp-sidebar .card-grid {
+  grid-template-columns: 1fr;
+}
+
 .otp-layout-root {
   width: min(100% - 2rem, 72rem);
   margin: 0 auto;
@@ -775,6 +785,10 @@ main .container,
   .otp-layout {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .otp-sidebar {
+    max-width: none;
   }
 
   .on-this-page {

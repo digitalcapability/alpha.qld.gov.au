@@ -153,6 +153,34 @@
     return main;
   }
 
+  function findSidebarResources(contentNode) {
+    if (!contentNode) return null;
+
+    var headingOrder = [
+      "policies and guidance",
+      "official framework sources",
+      "continue developing your capability"
+    ];
+
+    var sections = Array.prototype.slice.call(contentNode.querySelectorAll(":scope > section.framework-section"));
+
+    return (
+      sections.find(function (section) {
+        var cards = Array.prototype.slice.call(section.querySelectorAll(":scope > .card-grid > .resource-card"));
+        if (cards.length !== 3) return false;
+
+        var headings = cards.map(function (card) {
+          var heading = card.querySelector("h2");
+          return heading ? (heading.textContent || "").trim().toLowerCase() : "";
+        });
+
+        return headingOrder.every(function (label, index) {
+          return headings[index] === label;
+        });
+      }) || null
+    );
+  }
+
   function wrapContent(main, sideNav) {
     var host = findLayoutHost(main);
     if (!host) return null;
@@ -161,19 +189,30 @@
     var layout = document.createElement("div");
     layout.className = "otp-layout";
 
+    var sidebar = document.createElement("aside");
+    sidebar.className = "otp-sidebar";
+    sidebar.setAttribute("aria-label", "Page navigation and resources");
+    sidebar.appendChild(sideNav);
+
     var contentWrapper = document.createElement("div");
     contentWrapper.className = "otp-content";
 
     if (contentNode) {
+      var resourcesSection = findSidebarResources(contentNode);
+      if (resourcesSection) {
+        resourcesSection.remove();
+        sidebar.appendChild(resourcesSection);
+      }
+
       contentNode.parentNode.insertBefore(layout, contentNode);
-      layout.appendChild(sideNav);
+      layout.appendChild(sidebar);
       layout.appendChild(contentWrapper);
       contentWrapper.appendChild(contentNode);
       return layout;
     }
 
     var children = Array.prototype.slice.call(host.childNodes);
-    layout.appendChild(sideNav);
+    layout.appendChild(sidebar);
     layout.appendChild(contentWrapper);
 
     children.forEach(function (node) {
