@@ -303,6 +303,21 @@
     });
   }
 
+  function moveResourcesPanelIntoContent(layout) {
+    if (!layout) return;
+
+    var sidebarHasCards = layout.querySelector(".otp-sidebar .resource-card");
+    if (!sidebarHasCards) return;
+
+    var panel = document.querySelector("section.resources-panel");
+    if (!panel || layout.contains(panel)) return;
+
+    var contentColumn = layout.querySelector(":scope > .otp-content");
+    if (!contentColumn) return;
+
+    contentColumn.appendChild(panel);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var main = document.querySelector("main#main-content, main");
     if (!main) return;
@@ -315,6 +330,8 @@
     var nav = createNav(entries);
     var layout = wrapContent(main, nav);
     if (!layout) return;
+
+    moveResourcesPanelIntoContent(layout);
 
     setupDisclosureState(nav);
     setupNavigationBehaviour(nav);

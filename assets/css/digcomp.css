@@ -338,6 +338,11 @@ main .container,
   width: 100%;
   max-width: 16rem;
   align-self: start;
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  z-index: 1;
 }
 
 .otp-sidebar .card-grid {
@@ -365,10 +370,9 @@ main .container,
   border: 1px solid var(--border);
   border-radius: 0.25rem;
   align-self: start;
-  position: sticky;
-  top: 1.5rem;
-  max-height: calc(100vh - 2rem);
-  overflow: auto;
+  position: static;
+  max-height: none;
+  overflow: visible;
   box-shadow: none;
 }
 
@@ -788,7 +792,10 @@ main .container,
   }
 
   .otp-sidebar {
+    position: static;
     max-width: none;
+    max-height: none;
+    overflow: visible;
   }
 
   .on-this-page {
