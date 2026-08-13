@@ -674,6 +674,27 @@ main .container,
   margin-bottom: 0.5rem;
 }
 
+.accordion-item .nested-disclosure {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  background: var(--page-bg);
+}
+
+.accordion-item .nested-disclosure summary {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--heading);
+}
+
+.accordion-item .nested-disclosure summary:after {
+  float: right;
+}
+
+.accordion-item .nested-disclosure-content {
+  padding: 0 1rem 1rem;
+  background: var(--page-bg);
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
