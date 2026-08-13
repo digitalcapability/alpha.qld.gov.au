@@ -580,6 +580,12 @@ main .container,
   color: var(--heading);
 }
 
+.accordion-item summary:focus-visible,
+.on-this-page summary:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
 .accordion-item summary h2 {
   margin: 0;
   font-size: 1.15rem;
