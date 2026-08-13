@@ -706,6 +706,7 @@ main .container,
   border: 1px solid var(--border);
   border-radius: 0.35rem;
   padding: 1.25rem;
+  min-width: 0;
 }
 
 .resource-card h2 {
@@ -716,14 +717,18 @@ main .container,
 .resource-card ul {
   margin: 0;
   padding-left: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
 }
 
 .resource-card li {
-  margin-bottom: 0.55rem;
+  margin: 0;
 }
 
 .resource-card a {
   color: var(--link);
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .scannable-list,
