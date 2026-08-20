@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: "main"
+    schedule:
+      interval: daily
+      time: "08:30"
+      timezone: "Australia/Brisbane"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: ruby
+    #to help with chromatic turbo-snapshot which relies on package-lock.json
+    versioning-strategy: auto
+    directory: "/"
+    target-branch: "main"
+    schedule:
+      interval: daily
+      time: "08:30"
+      timezone: "Australia/Brisbane"
+    open-pull-requests-limit: 10

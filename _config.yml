@@ -1,6 +1,6 @@
 title: Queensland Government Digital Capability Hub
-url: "https://digitalcapability.github.io"
-baseurl: "/qld.gov.au"
+url: "https://qld-gov-au.github.io"
+baseurl: "/digitalcapability"
 
 # Keep permalink structure simple for Pages
 permalink: pretty
