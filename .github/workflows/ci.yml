@@ -1,4 +1,4 @@
-name: Jekyll asset path CI
+name: Jekyll asset path CI validate
 
 on:
   push:

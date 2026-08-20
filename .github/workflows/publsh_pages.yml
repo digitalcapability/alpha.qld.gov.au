@@ -1,4 +1,4 @@
-name: Jekyll asset path CI
+name: Publish Website to github Pages
 
 on:
   push:
