@@ -1,10 +1,9 @@
-name: Jekyll asset path CI
+name: Jekyll asset path CI validate
 
 on:
   push:
-    branches:
-      - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -12,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1 
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b #v1.321.0
         with:
           ruby-version: 3.2
           bundler-cache: true
@@ -35,3 +34,9 @@ jobs:
             echo "$bad"
             exit 1
           fi
+
+      - name: Package storybook files
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1 #provide nice artifact
+        with:
+          name: StaticSite
+          path: _site
