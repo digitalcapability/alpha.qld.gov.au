@@ -1,4 +1,4 @@
-# qld.gov.au
+# alpha.qld.gov.au
 
 Hub for all things Digital Capability for Qld Government public sector workforce.
 
@@ -19,7 +19,7 @@ sudo bundle install
 bundle exec jekyll serve --livereload
 ```
 
-Then open the local preview at `http://127.0.0.1:4000/digitalcapability/`.
+Then open the local preview at `http://127.0.0.1:4000/alpha.qld.gov.au/`.
 
 ## GitHub Pages
 
