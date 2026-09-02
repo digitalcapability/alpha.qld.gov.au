@@ -91,6 +91,78 @@
     return resultUrl;
   }
 
+  function getTextContent(documentRoot, selector) {
+    return Array.prototype.slice.call(documentRoot.querySelectorAll(selector))
+      .map(function (element) {
+        return (element.textContent || "").trim();
+      })
+      .filter(Boolean)
+      .join(" ");
+  }
+
+  function enrichSearchEntry(entry) {
+    var generatedSearchUrl = getSearchResultUrl(entry.url);
+
+    return window.fetch(generatedSearchUrl)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Search page request failed: " + response.status);
+        }
+
+        return response.text().then(function (html) {
+          var page = new DOMParser().parseFromString(html, "text/html");
+          var main = page.querySelector("main#main-content, main") || page.body;
+          var enrichedEntry = {
+            title: entry.title,
+            url: entry.url,
+            description: entry.description,
+            keywords: entry.keywords,
+            headings: getTextContent(main, "h1, h2, h3, h4, h5, h6"),
+            capabilityNames: getTextContent(main, "h1"),
+            navigationLabels: getTextContent(page, ".site-nav a, .on-this-page a"),
+            resourceTitles: getTextContent(main, ".resource-card a, .resource-list a"),
+            tags: entry.keywords,
+            content: (main.textContent || "").replace(/\s+/g, " ").trim()
+          };
+
+          console.info("Search indexed page", {
+            indexedUrl: entry.url,
+            generatedSearchUrl: generatedSearchUrl,
+            existingPageUrl: response.url,
+            indexedFields: {
+              title: enrichedEntry.title,
+              headings: enrichedEntry.headings,
+              capabilityNames: enrichedEntry.capabilityNames,
+              navigationLabels: enrichedEntry.navigationLabels,
+              resourceTitles: enrichedEntry.resourceTitles,
+              keywords: enrichedEntry.keywords,
+              tags: enrichedEntry.tags,
+              description: enrichedEntry.description,
+              content: enrichedEntry.content
+            }
+          });
+
+          return enrichedEntry;
+        });
+      })
+      .catch(function (error) {
+        console.warn("Search page was not enriched", {
+          indexedUrl: entry.url,
+          generatedSearchUrl: generatedSearchUrl,
+          existingPageUrl: window.location.pathname,
+          error: error.message
+        });
+        return entry;
+      });
+  }
+
+  function enrichSearchIndex() {
+    return Promise.all(SITE_SEARCH_INDEX.map(enrichSearchEntry)).then(function (entries) {
+      SITE_SEARCH_INDEX = entries;
+      console.info("Search index ready", { indexedPages: SITE_SEARCH_INDEX.length });
+    });
+  }
+
   function slugify(text) {
     return text
       .toLowerCase()
@@ -118,7 +190,17 @@
     var title = normalizeSearchText(entry.title);
     var description = normalizeSearchText(entry.description);
     var keywords = normalizeSearchText(entry.keywords);
-    var haystack = title + " " + description + " " + keywords;
+    var haystack = [
+      title,
+      description,
+      keywords,
+      normalizeSearchText(entry.headings),
+      normalizeSearchText(entry.capabilityNames),
+      normalizeSearchText(entry.navigationLabels),
+      normalizeSearchText(entry.resourceTitles),
+      normalizeSearchText(entry.content),
+        normalizeSearchText(entry.tags)
+    ].join(" ");
     var score = 0;
 
     if (title === normalizedQuery) {
@@ -254,7 +336,7 @@
 
     var input = searchWidget.querySelector("#site-search");
     var resultsContainer = searchWidget.querySelector("#search-results");
-    var closeTimer = null;
+    var searchIndexReady = enrichSearchIndex();
 
     function closeResults() {
       resultsContainer.hidden = true;
@@ -262,13 +344,11 @@
       input.setAttribute("aria-expanded", "false");
     }
 
-    function scheduleClose() {
-      window.clearTimeout(closeTimer);
-      closeTimer = window.setTimeout(closeResults, 120);
-    }
-
     input.addEventListener("input", function () {
       renderSearchResults(resultsContainer, input, input.value);
+      searchIndexReady.then(function () {
+        renderSearchResults(resultsContainer, input, input.value);
+      });
     });
 
     input.addEventListener("focus", function () {
@@ -290,13 +370,21 @@
       }
     });
 
-    searchWidget.addEventListener("mouseenter", function () {
-      window.clearTimeout(closeTimer);
+    searchWidget.addEventListener("focusout", function () {
+      window.setTimeout(function () {
+        if (!searchWidget.contains(document.activeElement)) {
+          closeResults();
+        }
+      }, 0);
     });
 
-    searchWidget.addEventListener("mouseleave", scheduleClose);
+    resultsContainer.addEventListener("click", function (event) {
+      if (event.target.closest(".search-result")) {
+        closeResults();
+      }
+    });
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("pointerdown", function (event) {
       if (!searchWidget.contains(event.target)) {
         closeResults();
       }
