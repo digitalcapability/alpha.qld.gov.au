@@ -911,11 +911,11 @@ main .container,
 }
 
 .segment-3 {
-  top: 53%;
-  left: 32%;
+  top: 84%;
+  left: 27%;
   width: 46%;
-  height: 42%;
-  clip-path: polygon(20% 0%, 80% 0%, 95% 25%, 50% 100%, 5% 25%);
+  height: 8%;
+  clip-path: polygon(5% 0%, 95% 0%, 100% 75%, 97% 100%, 1% 100%, 0% 75%);
 }
 
 .segment-4 {
