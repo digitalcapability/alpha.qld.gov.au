@@ -1,4 +1,5 @@
 (function () {
+  var SEARCH_SCRIPT_URL = document.currentScript && document.currentScript.src;
   var SITE_SEARCH_INDEX = [
     {
       title: 'Home',
@@ -67,6 +68,28 @@
       keywords: 'contact email team'
     }
   ];
+
+  function getSiteBaseUrl() {
+    if (!SEARCH_SCRIPT_URL) return "";
+
+    var scriptPath = new URL(SEARCH_SCRIPT_URL, window.location.origin).pathname;
+    var assetsPathIndex = scriptPath.indexOf("/assets/js/");
+
+    return assetsPathIndex === -1 ? "" : scriptPath.slice(0, assetsPathIndex);
+  }
+
+  function getSearchResultUrl(indexedUrl) {
+    var baseUrl = getSiteBaseUrl();
+    var resultUrl = baseUrl + "/" + indexedUrl.replace(/^\/+/, "");
+
+    console.info("Search URL resolution", {
+      indexedUrl: indexedUrl,
+      generatedSearchUrl: resultUrl,
+      existingPageUrl: window.location.pathname
+    });
+
+    return resultUrl;
+  }
 
   function slugify(text) {
     return text
@@ -193,7 +216,7 @@
     matches.forEach(function (entry) {
       var item = document.createElement("a");
       item.className = "search-result";
-      item.href = entry.url;
+      item.href = getSearchResultUrl(entry.url);
       item.setAttribute("role", "option");
 
       var title = document.createElement("span");
