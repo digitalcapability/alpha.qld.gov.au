@@ -465,17 +465,19 @@ main .container,
   border-radius: 0.35rem;
 }
 
+.assessment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
 .intro-panel {
   background: var(--page-bg);
   border: 1px solid var(--border);
   border-radius: 0.45rem;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(19, 18, 18, 0.06);
-  margin-bottom: 1rem;
-}
-
-main .container > * + * {
-  margin-top: 2.5rem;
+  margin-bottom: 0;
 }
 
 .intro-panel h1 {
