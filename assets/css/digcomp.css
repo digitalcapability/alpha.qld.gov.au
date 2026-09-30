@@ -475,7 +475,7 @@ main .container,
 }
 
 main .container > * + * {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .intro-panel h1 {
