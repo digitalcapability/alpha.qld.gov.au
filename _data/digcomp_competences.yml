@@ -1,0 +1,63 @@
+- id: "1.1"
+  area: 1
+  title: Browsing, searching and filtering information
+- id: "1.2"
+  area: 1
+  title: Evaluating information
+- id: "1.3"
+  area: 1
+  title: Managing information
+- id: "2.1"
+  area: 2
+  title: Interacting through digital technologies
+- id: "2.2"
+  area: 2
+  title: Sharing through digital technologies
+- id: "2.3"
+  area: 2
+  title: Participating in society through digital technologies
+- id: "2.4"
+  area: 2
+  title: Collaborating through digital technologies
+- id: "2.5"
+  area: 2
+  title: Digital Behaviour
+- id: "2.6"
+  area: 2
+  title: Managing digital identity
+- id: "3.1"
+  area: 3
+  title: Developing digital content
+- id: "3.2"
+  area: 3
+  title: Integrating and re-elaborating digital content
+- id: "3.3"
+  area: 3
+  title: Copyright and licences
+- id: "3.4"
+  area: 3
+  title: Computational thinking and programming
+- id: "4.1"
+  area: 4
+  title: Protecting devices
+- id: "4.2"
+  area: 4
+  title: Protecting personal data and privacy
+- id: "4.3"
+  area: 4
+  title: Supporting wellbeing
+- id: "4.4"
+  area: 4
+  title: Environmental impacts of digital technologies
+- id: "5.1"
+  area: 5
+  title: Identifying and solving technical problems
+- id: "5.2"
+  area: 5
+  title: Identifying needs and digital technological responses
+- id: "5.3"
+  area: 5
+  title: Identifying creative solutions using digital technologies
+- id: "5.4"
+  area: 5
+  title: Identifying and addressing digital capability needs

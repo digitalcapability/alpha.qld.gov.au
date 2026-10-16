@@ -1,0 +1,120 @@
+- id: ai-and-digital-tools
+  title: AI and Digital Tools
+  area: 5
+  questions:
+    - id: write-an-effective-prompt
+      title: How do I write an effective prompt?
+      overview: Be clear about the task, audience, context and format you need. Avoid entering sensitive information, and check the result before using it.
+      competences: ["3.1", "5.2", "5.3"]
+    - id: summarise-documents-with-ai
+      title: Can AI help summarise documents?
+      overview: AI may help identify key points, but use only approved tools and check the summary against the original document before relying on it.
+      competences: ["1.2", "1.3", "3.2", "4.2"]
+    - id: verify-ai-generated-content
+      title: How do I verify AI-generated content?
+      overview: Check AI-generated information against trusted sources, organisational guidance and subject matter expertise before relying on or sharing it.
+      competences: ["1.2", "4.2", "5.3"]
+    - id: choose-a-digital-tool
+      title: Which digital tool should I use?
+      overview: Start with the need, audience and risks. Check which approved tools are already available and whether they meet accessibility, privacy and security requirements.
+      competences: ["5.2", "5.3", "4.2"]
+- id: information-and-data
+  title: Information and Data
+  area: 1
+  questions:
+    - id: find-reliable-information
+      title: How do I find reliable information?
+      overview: Search trusted sources, check who created the information and when, and compare important claims with other authoritative evidence.
+      competences: ["1.1", "1.2"]
+    - id: manage-information-and-records
+      title: How do I manage information and records?
+      overview: Store records in approved systems, use consistent names and metadata, and follow your agency's information management and retention guidance.
+      competences: ["1.3", "2.2", "4.2"]
+    - id: improve-data-quality
+      title: How do I improve data quality?
+      overview: Check data for completeness, accuracy and consistency, understand its source and limitations, and correct issues using agreed processes.
+      competences: ["1.2", "1.3"]
+    - id: data-for-decisions
+      title: How can data support decision-making?
+      overview: Use relevant, reliable data alongside context and professional judgement. Make limitations clear and protect information when sharing findings.
+      competences: ["1.2", "1.3", "2.2"]
+- id: communication-and-collaboration
+  title: Communication and Collaboration
+  area: 2
+  questions:
+    - id: choose-teams-email-sharepoint
+      title: When should I use Teams, Email or SharePoint?
+      overview: Choose the channel that fits the task, audience and information. Use shared workspaces for ongoing collaboration and follow agency guidance for records and sensitive content.
+      competences: ["2.1", "2.2", "1.3"]
+    - id: collaborate-effectively-online
+      title: How do I collaborate effectively online?
+      overview: Agree on roles, shared documents and ways of working. Keep contributions accessible, respectful and easy for the team to find.
+      competences: ["2.4", "2.1", "2.5"]
+    - id: engage-stakeholders-digitally
+      title: How do I engage stakeholders digitally?
+      overview: Select an accessible channel that suits the audience, provide clear information and make it easy for people to participate and respond.
+      competences: ["2.1", "2.3", "2.5"]
+    - id: join-a-community-of-practice
+      title: How can I participate in a community of practice?
+      overview: Contribute useful knowledge, ask questions and respect community guidelines when sharing ideas and resources online.
+      competences: ["2.3", "2.4", "2.5"]
+- id: creating-content
+  title: Creating Content
+  area: 3
+  questions:
+    - id: create-accessible-content
+      title: How do I create accessible content?
+      overview: Use clear language, meaningful headings, descriptive links, text alternatives for images and accessible document formats. Check content with relevant accessibility tools.
+      competences: ["3.1", "3.2", "4.3"]
+    - id: create-engaging-presentations
+      title: How do I create engaging presentations?
+      overview: Focus on the audience and purpose, organise a clear story, use visuals thoughtfully and check that slides are accessible and easy to follow.
+      competences: ["3.1", "3.2"]
+    - id: ai-for-content-creation
+      title: How do I use AI to support content creation?
+      overview: Use approved tools to support drafting or editing, protect sensitive information and review the output for accuracy, accessibility, tone and bias.
+      competences: ["3.1", "3.2", "1.2", "4.2"]
+    - id: reuse-content-appropriately
+      title: How do I reuse content appropriately?
+      overview: Check ownership, copyright, licence conditions and attribution requirements before adapting or sharing content.
+      competences: ["3.2", "3.3"]
+- id: security-and-privacy
+  title: Security and Privacy
+  area: 4
+  questions:
+    - id: protect-sensitive-information
+      title: How do I protect sensitive information?
+      overview: Use approved systems and sharing settings, limit access to people who need it, and follow agency classification, storage and handling requirements.
+      competences: ["4.2", "1.3", "2.2"]
+    - id: suspected-phishing
+      title: What should I do if I suspect a phishing attempt?
+      overview: Do not click links or open unexpected attachments. Report the message using your agency's process and contact your service desk if you interacted with it.
+      competences: ["4.1", "4.2"]
+    - id: handle-personal-information
+      title: How do I handle personal information appropriately?
+      overview: Collect, access, use and share only what is needed for an authorised purpose, and follow privacy and records management requirements.
+      competences: ["4.2", "1.3"]
+    - id: use-digital-tools-safely
+      title: How can I use digital tools safely?
+      overview: Use approved tools, keep devices and accounts secure, check sharing settings and seek advice if you are unsure whether information can be entered or shared.
+      competences: ["4.1", "4.2", "2.5"]
+- id: improving-ways-of-working
+  title: Improving Ways of Working
+  area: 5
+  questions:
+    - id: improve-a-business-process
+      title: How can I improve a business process?
+      overview: Understand the current process and user needs, identify delays or repeated work, and test a small improvement with the people who use it.
+      competences: ["5.2", "5.3", "3.4"]
+    - id: identify-automation-opportunities
+      title: How do I identify opportunities for automation?
+      overview: Look for stable, repetitive steps and assess their value, risks and exceptions before choosing an approved automation approach.
+      competences: ["5.2", "3.4", "5.3"]
+    - id: choose-the-right-digital-solution
+      title: How do I choose the right digital solution?
+      overview: Define the problem and user needs first, then compare approved options for fit, accessibility, security, privacy and ongoing support.
+      competences: ["5.2", "5.3", "4.2"]
+    - id: build-capability-in-my-team
+      title: How can I help build capability in my team?
+      overview: Discuss the team's needs, share practical learning opportunities and support colleagues to apply new skills in their day-to-day work.
+      competences: ["5.4", "2.4", "5.2"]
