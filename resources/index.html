@@ -27,6 +27,20 @@
           <p class="eyebrow">Learning and resources</p>
           <h1>Explore resources that support practical learning</h1>
           <p>In preparation for the PoC launch, the Queensland Government and Australian Government resources below have been reviewed and considered for alignment to the PoC self-assessment tool and Digital Capability Hub site. They support alignment, wherever possible, with current government frameworks, policies, standards, guidance and related capability initiatives.</p>
+          <div class="workplace-related">
+            <h2>Find resources for a workplace task</h2>
+            <p>Start with a practical question to discover relevant competence guidance and learning opportunities.</p>
+            <ul class="related-question-list">
+              {% for category in site.data.workplace_questions %}
+                {% for question in category.questions %}
+                  {% if question.popular %}
+                    <li><a href="{{ '/common-workplace-questions/questions/' | append: question.id | append: '/' | relative_url }}">{{ question.title }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </ul>
+            <a href="{{ '/common-workplace-questions/' | relative_url }}">Browse all Common Workplace Questions</a>
+          </div>
 
           <h2>Key frameworks and capability sources reviewed</h2>
           <div class="table-wrap">

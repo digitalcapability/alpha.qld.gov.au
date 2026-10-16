@@ -1,120 +1,229 @@
 - id: ai-and-digital-tools
   title: AI and Digital Tools
   area: 5
+  description: Use approved digital tools and AI confidently, critically and safely in your work.
   questions:
     - id: write-an-effective-prompt
       title: How do I write an effective prompt?
       overview: Be clear about the task, audience, context and format you need. Avoid entering sensitive information, and check the result before using it.
+      guidance: Give an approved AI tool a clear task, useful background, intended audience and preferred format. Break complex work into smaller requests, refine the prompt when needed, and verify important facts and outputs before using them.
       competences: ["3.1", "5.2", "5.3"]
+      popular: true
+      keywords: [prompt, prompting, AI, GenAI, "artificial intelligence", Copilot, "Microsoft Copilot", "generative AI"]
+      synonyms: ["write an instruction", "ask AI", "AI question", "prompt engineering"]
+      related_questions: [summarise-documents-with-ai, verify-ai-generated-content, ai-for-content-creation, protect-sensitive-information]
     - id: summarise-documents-with-ai
       title: Can AI help summarise documents?
       overview: AI may help identify key points, but use only approved tools and check the summary against the original document before relying on it.
+      guidance: First check whether the document can be entered into the AI tool under your agency's information-handling rules. Ask for a concise summary or specific themes, then compare the result with the original and check that important context, dates and caveats have not been missed.
       competences: ["1.2", "1.3", "3.2", "4.2"]
+      popular: true
+      keywords: [AI, GenAI, "artificial intelligence", Copilot, summarise, summarize, summary, document, report]
+      synonyms: ["condense a document", "key points", "meeting notes", "shorten a report"]
+      related_questions: [write-an-effective-prompt, verify-ai-generated-content, protect-sensitive-information, ai-for-content-creation]
     - id: verify-ai-generated-content
       title: How do I verify AI-generated content?
       overview: Check AI-generated information against trusted sources, organisational guidance and subject matter expertise before relying on or sharing it.
+      guidance: Treat AI output as a starting point, not an authoritative source. Verify claims against current primary sources, check links and quotations, look for omissions or bias, and ask a subject matter expert to review high-impact content.
       competences: ["1.2", "4.2", "5.3"]
+      popular: true
+      keywords: [AI, GenAI, "artificial intelligence", Copilot, accuracy, verify, check, trustworthy, misinformation]
+      synonyms: ["check AI answers", "fact check AI", "trust AI output", "AI hallucination"]
+      related_questions: [summarise-documents-with-ai, find-reliable-information, write-an-effective-prompt, protect-sensitive-information]
     - id: choose-a-digital-tool
       title: Which digital tool should I use?
       overview: Start with the need, audience and risks. Check which approved tools are already available and whether they meet accessibility, privacy and security requirements.
+      guidance: Define the task and the people who will use the tool before comparing options. Check agency-approved products first, then consider accessibility, information sensitivity, integration, support and the effort required to maintain the solution.
       competences: ["5.2", "5.3", "4.2"]
+      keywords: [tool, software, technology, application, app, platform, AI, approved]
+      synonyms: ["choose an app", "which software", "right technology", "tool selection"]
+      related_questions: [choose-the-right-digital-solution, use-digital-tools-safely, write-an-effective-prompt, collaborate-effectively-online]
 - id: information-and-data
   title: Information and Data
   area: 1
+  description: Find, assess, organise and use information and data effectively and responsibly.
   questions:
     - id: find-reliable-information
       title: How do I find reliable information?
       overview: Search trusted sources, check who created the information and when, and compare important claims with other authoritative evidence.
+      guidance: Search the most relevant government, agency or subject-specific sources using clear terms and filters. Check the author's authority, publication date, evidence and purpose, and compare important claims with another reliable source.
       competences: ["1.1", "1.2"]
+      popular: true
+      keywords: [search, information, source, reliable, trustworthy, evidence, research, internet]
+      synonyms: ["find trustworthy sources", "check a website", "search effectively", "credible information"]
+      related_questions: [verify-ai-generated-content, improve-data-quality, data-for-decisions, manage-information-and-records]
     - id: manage-information-and-records
       title: How do I manage information and records?
       overview: Store records in approved systems, use consistent names and metadata, and follow your agency's information management and retention guidance.
+      guidance: Save working information and official records in the systems your agency approves for that purpose. Use agreed naming and classification practices, apply access controls, and follow retention and disposal requirements so colleagues can find the right record later.
       competences: ["1.3", "2.2", "4.2"]
+      keywords: [records, files, documents, information, SharePoint, storage, folders, retention, metadata]
+      synonyms: ["organise files", "file management", "save documents", "records management"]
+      related_questions: [improve-data-quality, protect-sensitive-information, choose-teams-email-sharepoint, find-reliable-information]
     - id: improve-data-quality
       title: How do I improve data quality?
       overview: Check data for completeness, accuracy and consistency, understand its source and limitations, and correct issues using agreed processes.
+      guidance: Agree what good-quality data means for the decision or service, then check for missing values, duplicates, inconsistent formats and unusual results. Trace issues to their source, document corrections and limitations, and improve the process that created recurring errors.
       competences: ["1.2", "1.3"]
+      keywords: [data, quality, accurate, accuracy, complete, consistent, clean, spreadsheet]
+      synonyms: ["clean data", "fix data", "data errors", "improve datasets"]
+      related_questions: [data-for-decisions, find-reliable-information, manage-information-and-records, identify-automation-opportunities]
     - id: data-for-decisions
       title: How can data support decision-making?
       overview: Use relevant, reliable data alongside context and professional judgement. Make limitations clear and protect information when sharing findings.
+      guidance: Start with the decision you need to make and identify the data that is relevant to it. Check the data's quality, coverage and limitations, interpret it in context, and explain uncertainty so decision-makers can combine evidence with professional judgement.
       competences: ["1.2", "1.3", "2.2"]
+      keywords: [data, decisions, analysis, insight, evidence, reporting, visualisation, charts]
+      synonyms: ["make decisions with data", "data analysis", "use evidence", "interpret data"]
+      related_questions: [improve-data-quality, find-reliable-information, manage-information-and-records, engage-stakeholders-digitally]
 - id: communication-and-collaboration
   title: Communication and Collaboration
   area: 2
+  description: Choose effective ways to communicate, collaborate and engage with colleagues and stakeholders.
   questions:
     - id: choose-teams-email-sharepoint
-      title: When should I use Teams, Email or SharePoint?
+      title: When should I use Teams instead of email?
       overview: Choose the channel that fits the task, audience and information. Use shared workspaces for ongoing collaboration and follow agency guidance for records and sensitive content.
+      guidance: Use Teams chat for quick, informal coordination and a channel or shared workspace when a group needs an ongoing discussion and shared files. Use email when a formal, direct or external communication is more appropriate, and store official records in the approved system rather than relying on a chat history.
       competences: ["2.1", "2.2", "1.3"]
+      popular: true
+      keywords: [Teams, "Microsoft Teams", email, Outlook, SharePoint, chat, message, communication, collaboration, meeting, channel]
+      synonyms: ["Teams or email", "email or chat", "where should I share a file", "which communication channel"]
+      related_questions: [collaborate-effectively-online, manage-information-and-records, engage-stakeholders-digitally, protect-sensitive-information]
     - id: collaborate-effectively-online
       title: How do I collaborate effectively online?
       overview: Agree on roles, shared documents and ways of working. Keep contributions accessible, respectful and easy for the team to find.
+      guidance: Agree how the team will communicate, make decisions, manage shared documents and track actions. Use accessible formats, clear file names and inclusive meeting practices, and record important decisions where the whole team can find them.
       competences: ["2.4", "2.1", "2.5"]
+      keywords: [collaboration, collaborate, online, Teams, SharePoint, teamwork, remote, hybrid, co-author]
+      synonyms: ["work together online", "virtual teamwork", "online meetings", "collaborative working"]
+      related_questions: [choose-teams-email-sharepoint, engage-stakeholders-digitally, join-a-community-of-practice, create-accessible-content]
     - id: engage-stakeholders-digitally
       title: How do I engage stakeholders digitally?
       overview: Select an accessible channel that suits the audience, provide clear information and make it easy for people to participate and respond.
+      guidance: Identify who needs to participate and what input you need before selecting an online channel. Provide plain-language, accessible information, offer an appropriate way to contribute, and explain how feedback will be considered and followed up.
       competences: ["2.1", "2.3", "2.5"]
+      keywords: [stakeholders, engagement, consultation, participation, audience, online, digital, community]
+      synonyms: ["consult people online", "digital engagement", "online consultation", "involve stakeholders"]
+      related_questions: [collaborate-effectively-online, join-a-community-of-practice, create-accessible-content, data-for-decisions]
     - id: join-a-community-of-practice
       title: How can I participate in a community of practice?
       overview: Contribute useful knowledge, ask questions and respect community guidelines when sharing ideas and resources online.
+      guidance: Find a community relevant to your work, read its participation and privacy expectations, and introduce a question or experience that others can learn from. Share useful resources with context, acknowledge contributors and follow up on ideas you apply.
       competences: ["2.3", "2.4", "2.5"]
+      keywords: [community, practice, network, knowledge, share, professional, forum, collaboration]
+      synonyms: ["join a network", "share knowledge", "professional community", "community participation"]
+      related_questions: [collaborate-effectively-online, engage-stakeholders-digitally, build-capability-in-my-team, choose-teams-email-sharepoint]
 - id: creating-content
   title: Creating Content
   area: 3
+  description: Create clear, engaging and accessible digital content and use existing material appropriately.
   questions:
     - id: create-accessible-content
       title: How do I create accessible content?
       overview: Use clear language, meaningful headings, descriptive links, text alternatives for images and accessible document formats. Check content with relevant accessibility tools.
+      guidance: Structure content with descriptive headings, plain language and meaningful link text. Add text alternatives for informative images, use sufficient colour contrast, caption audio or video, and check documents with accessibility tools before sharing them.
       competences: ["3.1", "3.2", "4.3"]
+      popular: true
+      keywords: [accessibility, accessible, content, document, Word, PDF, headings, alt text, inclusive, WCAG]
+      synonyms: ["make a document accessible", "accessible document", "inclusive content", "accessibility checker"]
+      related_questions: [create-engaging-presentations, ai-for-content-creation, engage-stakeholders-digitally, reuse-content-appropriately]
     - id: create-engaging-presentations
       title: How do I create engaging presentations?
       overview: Focus on the audience and purpose, organise a clear story, use visuals thoughtfully and check that slides are accessible and easy to follow.
+      guidance: Decide what your audience should understand or do, then organise a small number of key messages into a clear sequence. Use readable text and purposeful visuals, provide context for charts, and check slide order, contrast and accessibility before presenting.
       competences: ["3.1", "3.2"]
+      keywords: [presentation, slides, PowerPoint, visual, audience, storytelling, design]
+      synonyms: ["make better slides", "create a presentation", "engaging slides", "presentation design"]
+      related_questions: [create-accessible-content, ai-for-content-creation, reuse-content-appropriately, engage-stakeholders-digitally]
     - id: ai-for-content-creation
       title: How do I use AI to support content creation?
       overview: Use approved tools to support drafting or editing, protect sensitive information and review the output for accuracy, accessibility, tone and bias.
+      guidance: Use an approved AI tool for a defined task such as brainstorming, outlining or editing, and do not enter information the tool is not authorised to handle. Review and revise the output for accuracy, accessibility, bias, tone, copyright and your organisation's requirements before publication.
       competences: ["3.1", "3.2", "1.2", "4.2"]
+      keywords: [AI, GenAI, "artificial intelligence", Copilot, writing, drafting, editing, content, create]
+      synonyms: ["write with AI", "AI writing assistant", "generate content", "draft with Copilot"]
+      related_questions: [write-an-effective-prompt, verify-ai-generated-content, create-accessible-content, protect-sensitive-information]
     - id: reuse-content-appropriately
       title: How do I reuse content appropriately?
       overview: Check ownership, copyright, licence conditions and attribution requirements before adapting or sharing content.
+      guidance: Confirm who owns the material and whether its copyright, licence or terms allow your intended reuse. Preserve required attribution, check that changes do not misrepresent the source, and use approved content or seek permission when the reuse rights are unclear.
       competences: ["3.2", "3.3"]
+      keywords: [reuse, copyright, licence, license, attribution, images, content, intellectual property]
+      synonyms: ["use existing content", "copyright material", "reuse images", "content licensing"]
+      related_questions: [create-accessible-content, create-engaging-presentations, ai-for-content-creation, find-reliable-information]
 - id: security-and-privacy
   title: Security and Privacy
   area: 4
+  description: Protect devices, personal information and privacy while using digital tools at work.
   questions:
     - id: protect-sensitive-information
       title: How do I protect sensitive information?
       overview: Use approved systems and sharing settings, limit access to people who need it, and follow agency classification, storage and handling requirements.
+      guidance: Identify the sensitivity and classification of the information before storing, emailing or sharing it. Use only approved systems, check recipients and access permissions, minimise the information included, and follow your agency's procedures if information is exposed or sent to the wrong person.
       competences: ["4.2", "1.3", "2.2"]
+      keywords: [security, sensitive, confidential, classified, privacy, sharing, information, data]
+      synonyms: ["protect confidential data", "secure information", "share safely", "handle sensitive data"]
+      related_questions: [handle-personal-information, use-digital-tools-safely, manage-information-and-records, write-an-effective-prompt]
     - id: suspected-phishing
       title: What should I do if I suspect a phishing attempt?
       overview: Do not click links or open unexpected attachments. Report the message using your agency's process and contact your service desk if you interacted with it.
+      guidance: Do not click links, open attachments or reply to a suspicious message. Report it using your agency's phishing process; if you clicked, shared details or opened a file, contact your service desk promptly and follow their instructions.
       competences: ["4.1", "4.2"]
+      keywords: [phishing, scam, suspicious, email, cyber, security, link, attachment, report]
+      synonyms: ["report a scam email", "suspicious email", "fake message", "cyber attack"]
+      related_questions: [use-digital-tools-safely, protect-sensitive-information, handle-personal-information, find-reliable-information]
     - id: handle-personal-information
       title: How do I handle personal information appropriately?
       overview: Collect, access, use and share only what is needed for an authorised purpose, and follow privacy and records management requirements.
+      guidance: Confirm there is an authorised purpose before collecting or using personal information, and limit access and sharing to what is necessary. Store it in approved systems, check recipients and permissions, and follow privacy, security and records requirements throughout its lifecycle.
       competences: ["4.2", "1.3"]
+      keywords: [personal information, privacy, personal data, collection, records, sensitive, confidential]
+      synonyms: ["protect personal data", "privacy requirements", "handle private information", "personal details"]
+      related_questions: [protect-sensitive-information, manage-information-and-records, use-digital-tools-safely, suspected-phishing]
     - id: use-digital-tools-safely
       title: How can I use digital tools safely?
       overview: Use approved tools, keep devices and accounts secure, check sharing settings and seek advice if you are unsure whether information can be entered or shared.
+      guidance: Use agency-approved tools and keep devices, software and accounts protected using current agency advice. Check sharing and access settings before sending information, avoid entering sensitive details into unapproved services, and contact your service desk when unsure.
       competences: ["4.1", "4.2", "2.5"]
+      keywords: [safety, security, safe, tools, device, account, password, approved, AI]
+      synonyms: ["stay safe online", "use technology securely", "secure my device", "digital safety"]
+      related_questions: [protect-sensitive-information, suspected-phishing, choose-a-digital-tool, handle-personal-information]
 - id: improving-ways-of-working
   title: Improving Ways of Working
   area: 5
+  description: Solve workplace problems, choose suitable digital responses and improve how work gets done.
   questions:
     - id: improve-a-business-process
       title: How can I improve a business process?
       overview: Understand the current process and user needs, identify delays or repeated work, and test a small improvement with the people who use it.
+      guidance: Map the current steps with the people who perform or rely on the process, including hand-offs, delays and exceptions. Agree the problem to solve, test a small change with users, measure whether it helps, and consider accessibility, risk and records impacts before adopting it.
       competences: ["5.2", "5.3", "3.4"]
+      popular: true
+      keywords: [process, business process, improvement, workflow, efficiency, service, automation, mapping]
+      synonyms: ["improve a workflow", "streamline work", "fix a process", "process improvement"]
+      related_questions: [identify-automation-opportunities, choose-the-right-digital-solution, build-capability-in-my-team, improve-data-quality]
     - id: identify-automation-opportunities
       title: How do I identify opportunities for automation?
       overview: Look for stable, repetitive steps and assess their value, risks and exceptions before choosing an approved automation approach.
+      guidance: Look for frequent, rule-based tasks with predictable inputs and outputs, then quantify the time or service improvement an automation could deliver. Check exceptions, data quality, privacy, security and maintenance needs, and use your agency's approval and governance process before building or deploying it.
       competences: ["5.2", "3.4", "5.3"]
+      keywords: [automation, automate, repetitive, workflow, process, Power Automate, efficiency, digital]
+      synonyms: ["automate a task", "robotic process automation", "RPA", "reduce manual work"]
+      related_questions: [improve-a-business-process, choose-the-right-digital-solution, improve-data-quality, choose-a-digital-tool]
     - id: choose-the-right-digital-solution
       title: How do I choose the right digital solution?
       overview: Define the problem and user needs first, then compare approved options for fit, accessibility, security, privacy and ongoing support.
+      guidance: Describe the problem and user needs without assuming a particular technology is the answer. Compare approved options against accessibility, security, privacy, integration, cost, support and sustainability requirements, then test the best fit with users before committing.
       competences: ["5.2", "5.3", "4.2"]
+      keywords: [solution, tool, software, technology, requirements, users, accessibility, privacy, security]
+      synonyms: ["select a digital solution", "technology choice", "choose software", "digital procurement"]
+      related_questions: [choose-a-digital-tool, improve-a-business-process, identify-automation-opportunities, create-accessible-content]
     - id: build-capability-in-my-team
       title: How can I help build capability in my team?
       overview: Discuss the team's needs, share practical learning opportunities and support colleagues to apply new skills in their day-to-day work.
+      guidance: Ask colleagues what they need to do more confidently and identify practical learning that fits their roles. Make time to share knowledge, practise new skills on real tasks and reflect on what is working, while recognising different experience levels and accessibility needs.
       competences: ["5.4", "2.4", "5.2"]
+      keywords: [capability, team, learning, development, skills, training, colleagues, coaching]
+      synonyms: ["develop my team", "support digital skills", "team learning", "build digital capability"]
+      related_questions: [join-a-community-of-practice, improve-a-business-process, collaborate-effectively-online, choose-the-right-digital-solution]

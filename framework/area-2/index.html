@@ -775,6 +775,28 @@
       });
     </script>
 
+    <section class="content-panel workplace-related" aria-labelledby="workplace-related-heading">
+      <h2 id="workplace-related-heading">Common workplace questions related to this area</h2>
+      <p>Explore practical tasks connected to the competences in this area.</p>
+      <ul class="related-question-list">
+        {% assign shown_questions = "" | split: "," %}
+        {% for category in site.data.workplace_questions %}
+          {% for question in category.questions %}
+            {% assign related_competences = "" | split: "," %}
+            {% for competence_id in question.competences %}
+              {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
+              {% if competence and competence.area == 2 %}
+                {% assign related_competences = related_competences | push: competence.title %}
+              {% endif %}
+            {% endfor %}
+            {% unless related_competences.size == 0 or shown_questions contains question.id %}
+              <li><a href="{{ '/common-workplace-questions/questions/' | append: question.id | append: '/' | relative_url }}">{{ question.title }}</a> <span>({{ related_competences | join: ", " }})</span></li>
+              {% assign shown_questions = shown_questions | push: question.id %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </section>
     <section id="learning-resources" class="content-panel resources-panel" aria-label="Learning resources">
       <div class="container">
         <h2>Learning to expand your skills</h2>

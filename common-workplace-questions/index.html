@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Common Workplace Questions | Queensland Government Digital Capability Hub</title>
-    <meta name="description" content="Explore common public sector workplace questions and find related digital competences, practical guidance and learning resources.">
+    <meta name="description" content="Search common public sector workplace questions to find practical guidance, digital competences and learning resources.">
     <link rel="stylesheet" href="{{ '/assets/css/digcomp.css' | relative_url }}">
+    <script src="{{ '/assets/js/workplace-questions.js' | relative_url }}" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -23,35 +24,111 @@
 
     {% include navigation.html %}
 
-    <main id="main-content">
+    <main id="main-content" class="workplace-hub">
       <div class="container">
-        <section class="content-panel">
+        <section class="content-panel workplace-intro">
+          <p class="eyebrow">Practical learning</p>
           <h1>Common Workplace Questions</h1>
           <p>Explore common workplace tasks and activities to discover relevant digital competences, practical guidance and learning resources.</p>
           <p>Start with what you're trying to achieve and we'll help connect you with the most relevant capability areas.</p>
         </section>
 
-        <section class="steps-section" aria-labelledby="topic-heading">
-          <h2 id="topic-heading">Choose a workplace topic</h2>
-          <p>Browse common public sector activities and questions. Each topic links to relevant digital competences, resources, tools and learning opportunities.</p>
-          <nav class="workplace-topic-nav" aria-label="Workplace topics">
+        <section class="workplace-search-section" aria-labelledby="workplace-search-heading">
+          <h2 id="workplace-search-heading">What are you trying to do?</h2>
+          <label class="visually-hidden" for="workplace-search">Search workplace questions</label>
+          <div class="workplace-search-wrap">
+            <input id="workplace-search" type="search" placeholder="Search workplace questions..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="workplace-suggestions" aria-describedby="search-examples">
+            <div id="workplace-suggestions" class="workplace-suggestions" role="listbox" aria-label="Suggested workplace questions" hidden></div>
+          </div>
+          <p id="search-examples" class="search-examples">Try: write a prompt, Teams or email, improve data quality, accessibility, AI summary, stakeholder engagement.</p>
+
+          <div class="workplace-filters" role="group" aria-label="Filter questions by topic">
+            <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">All</button>
             {% for category in site.data.workplace_questions %}
-              <a class="workplace-topic-link" href="#{{ category.id }}">{{ category.title }}</a>
+              <button class="filter-chip" type="button" data-filter="{{ category.id }}" aria-pressed="false">{{ category.title }}</button>
             {% endfor %}
-          </nav>
+          </div>
         </section>
 
-        {% for category in site.data.workplace_questions %}
-          <section class="workplace-category" id="{{ category.id }}" aria-labelledby="{{ category.id }}-heading">
-            <h2 id="{{ category.id }}-heading">{{ category.title }}</h2>
-            <div class="card-grid">
+        <section class="popular-questions" aria-labelledby="popular-heading">
+          <div class="section-heading-row">
+            <div>
+              <h2 id="popular-heading">Popular Questions</h2>
+              <p>Get started with questions people often ask.</p>
+            </div>
+          </div>
+          <div class="popular-question-grid">
+            {% for category in site.data.workplace_questions %}
               {% for question in category.questions %}
-                <article class="workplace-question" id="{{ question.id }}">
-                  <h3>{{ question.title }}</h3>
-                  <h4>Overview</h4>
-                  <p>{{ question.overview }}</p>
+                {% if question.popular %}
+                  <article class="popular-question-card">
+                    <p class="question-topic">{{ category.title }}</p>
+                    <h3><a href="{{ '/common-workplace-questions/questions/' | append: question.id | append: '/' | relative_url }}">{{ question.title }}</a></h3>
+                    <p>{{ question.overview }}</p>
+                  </article>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </section>
 
-                  <h4>Related competences</h4>
+        <section class="workplace-topics" aria-labelledby="topics-heading">
+          <h2 id="topics-heading">Choose a workplace topic or search for a workplace question</h2>
+          <p>Browse common public sector activities and questions. Each topic links to relevant digital competences, resources, tools and learning opportunities.</p>
+          <div class="workplace-topic-grid">
+            {% for category in site.data.workplace_questions %}
+              <button class="workplace-topic-card" type="button" data-filter="{{ category.id }}" aria-pressed="false">
+                <span class="workplace-topic-title">{{ category.title }}</span>
+                <span>{{ category.description }}</span>
+                <span class="workplace-topic-count">{{ category.questions.size }} questions</span>
+              </button>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="workplace-results-section" aria-labelledby="results-heading">
+          <div class="section-heading-row">
+            <div>
+              <h2 id="results-heading">Workplace questions</h2>
+              <p id="workplace-result-count" class="result-count" aria-live="polite" aria-atomic="true"></p>
+            </div>
+          </div>
+          <div id="workplace-results" class="workplace-results-grid">
+            {% for category in site.data.workplace_questions %}
+              {% for question in category.questions %}
+                {% assign competence_terms = "" | split: "," %}
+                {% for competence_id in question.competences %}
+                  {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
+                  {% if competence %}
+                    {% assign competence_terms = competence_terms | push: competence.title | push: competence.id %}
+                  {% endif %}
+                {% endfor %}
+                {% assign related_question_terms = "" | split: "," %}
+                {% for related_category in site.data.workplace_questions %}
+                  {% for related_question in related_category.questions %}
+                    {% if question.related_questions contains related_question.id %}
+                      {% assign related_question_terms = related_question_terms | push: related_question.title %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+                {% assign related_terms = question.keywords | concat: question.synonyms | concat: competence_terms %}
+                {% assign related_terms = related_terms | concat: related_question_terms %}
+                <article class="workplace-question-card"
+                  data-id="{{ question.id }}"
+                  data-title="{{ question.title | escape }}"
+                  data-summary="{{ question.overview | escape }}"
+                  data-topic="{{ category.id }}"
+                  data-topic-label="{{ category.title | escape }}"
+                  data-keywords="{{ question.keywords | join: ' ' | escape }}"
+                  data-synonyms="{{ question.synonyms | join: ' ' | escape }}"
+                  data-related="{{ related_terms | join: ' ' | escape }}"
+                  data-resources="Area {{ category.area }} learning resources practical activities Digital Capability Framework"
+                  data-pathways="learning pathways self-paced learning opportunities"
+                  data-popular="{{ question.popular | default: false }}">
+                  <p class="question-topic">{{ category.title }}</p>
+                  <h3><a href="{{ '/common-workplace-questions/questions/' | append: question.id | append: '/' | relative_url }}">{{ question.title }}</a></h3>
+                  <p>{{ question.overview }}</p>
+                  <h4>Related Digital Competences</h4>
                   <ul class="competence-tags">
                     {% for competence_id in question.competences %}
                       {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
@@ -60,41 +137,18 @@
                       {% endif %}
                     {% endfor %}
                   </ul>
-
-                  <h4>Related resources</h4>
-                  <p>Use the competence guidance, practical activities and tools for this topic.</p>
-                  <div class="question-links">
-                    {% assign resource_areas = "" | split: "," %}
-                    {% for competence_id in question.competences %}
-                      {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
-                      {% if competence %}
-                        {% assign resource_areas = resource_areas | push: competence.area %}
-                      {% endif %}
-                    {% endfor %}
-                    {% assign resource_areas = resource_areas | uniq %}
-                    {% for area in resource_areas %}
-                      <a href="{{ '/framework/area-' | append: area | append: '/#learning-resources' | relative_url }}">Area {{ area }} resources</a>
-                    {% endfor %}
-                  </div>
-
-                  <h4>Learning opportunities</h4>
-                  <p>Explore self-paced resources, practical activities and public sector learning opportunities.</p>
-                  <div class="question-links">
-                    <a href="{{ '/resources/' | relative_url }}">Learning pathways and resources</a>
-                    {% assign first_competence_id = question.competences | first %}
-                    {% assign first_competence = site.data.digcomp_competences | where: "id", first_competence_id | first %}
-                    {% if first_competence %}
-                      <a href="{{ '/framework/area-' | append: first_competence.area | append: '/#learning-resources' | relative_url }}">Area {{ first_competence.area }} learning activities</a>
-                    {% endif %}
-                  </div>
-
-                  <h4>Suggested next steps</h4>
-                  <p>Choose a competence above to read its guidance, then try a related activity or learning resource.</p>
+                  <a class="button secondary" href="{{ '/common-workplace-questions/questions/' | append: question.id | append: '/' | relative_url }}">View guidance</a>
                 </article>
               {% endfor %}
-            </div>
-          </section>
-        {% endfor %}
+            {% endfor %}
+          </div>
+          <div id="workplace-no-results" class="no-results-panel" role="status" hidden>
+            <h3>We couldn't find an exact match. You may find these related questions helpful.</h3>
+            <div id="workplace-fallback-results" class="workplace-results-grid"></div>
+            <p>Try a different word or topic, or browse all <a href="{{ '/common-workplace-questions/' | relative_url }}">workplace questions</a>.</p>
+            <p>Explore <a href="{{ '/framework/' | relative_url }}">Digital Competence areas</a> or <a href="{{ '/resources/' | relative_url }}">learning resources and pathways</a> for more guidance.</p>
+          </div>
+        </section>
 
         <section class="content-panel">
           <h2>Explore the framework</h2>
