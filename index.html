@@ -5,8 +5,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home | Queensland Government Digital Capability Hub</title>
-    <meta name="description" content="Explore DigComp 3.0 and digital capability development for Queensland Government employees.">
+    <title>Digital Capability Hub | Queensland Government</title>
+    <meta name="description" content="Develop the digital skills and confidence needed to work effectively in the Queensland public sector.">
     <link rel="stylesheet" href="{{ '/assets/css/digcomp.css' | relative_url }}">
     <script src="{{ '/assets/js/on-this-page.js' | relative_url }}" defer></script>
   </head>
@@ -27,15 +27,42 @@
     <main id="main-content">
       <section class="intro-section">
         <div class="container">
-          <h1>Queensland Government digital capability</h1>
-          <p>Build the knowledge, skills and attitudes needed to work confidently, critically, safely and responsibly in a changing digital environment.</p>
-          <p class="page-disclaimer">
-            <strong>Disclaimer:</strong> The Queensland Government Digital Capability Hub provides guidance and learning resources to support digital capability development across the Queensland public sector workforce.
-            Content is provided for information and capability development purposes only and does not replace agency policies, procedures, legislative requirements or official advice.
-            Employees should follow the policies, standards and approved technologies that apply within their agency.
+          <div class="homepage-hero-copy">
+            <h1>Digital Capability Hub</h1>
+            <p class="homepage-tagline">Develop the digital skills and confidence needed to work effectively in the Queensland public sector.</p>
+          </div>
+
+          <nav class="homepage-actions" aria-label="Explore the Digital Capability Hub">
+            <a class="homepage-action-card" href="{{ '/framework/' | relative_url }}">
+              <span class="homepage-action-title">Explore the Framework</span>
+              <span>Discover the Digital Competence Framework and build your understanding of digital capability.</span>
+            </a>
+            <a class="homepage-action-card homepage-action-featured" href="{{ '/common-workplace-questions/' | relative_url }}">
+              <span class="homepage-action-title">Common Workplace Questions</span>
+              <span>Start with a workplace task or question and discover relevant guidance, resources and digital competences.</span>
+            </a>
+            <a class="homepage-action-card" href="{{ '/assessment/' | relative_url }}">
+              <span class="homepage-action-title">Assess Your Capability</span>
+              <span>Understand your current strengths and identify opportunities for development.</span>
+            </a>
+            <a class="homepage-action-card" href="{{ '/resources/' | relative_url }}">
+              <span class="homepage-action-title">Learning and Resources</span>
+              <span>Explore practical learning opportunities, resources and development pathways.</span>
+            </a>
+          </nav>
+
+          <p class="homepage-support-links">
+            <a href="#proof-of-concept">Proof of Concept</a>
+            <span aria-hidden="true"> | </span>
+            <a href="#disclaimer-information">Terms and Disclaimers</a>
           </p>
+        </div>
+      </section>
+
+      <section class="homepage-support-section">
+        <div class="container">
           <div class="homepage-intro-stack">
-            <article class="intro-card proof-card">
+            <article id="proof-of-concept" class="intro-card proof-card">
               <p class="eyebrow">Queensland Government digital capability</p>
               <h2>Proof of concept</h2>
               <p>
@@ -43,6 +70,9 @@
               </p>
               <p>
                 A cross-agency cohort is expected to participate in late 2026. Findings may inform future decisions about a scalable digital capability solution. No future solution or investment has been determined.
+              </p>
+              <p class="proof-advisory">
+                Information on this site is provided for learning and capability development purposes and should not replace agency policies, procedures, standards or official advice.
               </p>
               <div class="button-row">
                 <div class="details-box">
@@ -159,6 +189,17 @@
           <a class="button primary" href="{{ '/common-workplace-questions/' | relative_url }}">Browse Common Workplace Questions</a>
         </div>
         <p class="supporting-link"><a href="{{ '/start-here/' | relative_url }}">Explore other ways to get started</a></p>
+      </section>
+
+      <section id="disclaimer-information" class="container disclaimer-section" aria-labelledby="disclaimer-heading">
+        <details class="disclosure">
+          <summary class="disclosure-summary"><span id="disclaimer-heading">Disclaimer and Important Information</span></summary>
+          <div class="disclosure-content">
+            <p>The Queensland Government Digital Capability Hub provides guidance and learning resources to support digital capability development across the Queensland public sector workforce.</p>
+            <p>Content is provided for information and capability development purposes only and does not replace agency policies, procedures, legislative requirements or official advice.</p>
+            <p>Employees should follow the policies, standards and approved technologies that apply within their agency.</p>
+          </div>
+        </details>
       </section>
     </main>
 
