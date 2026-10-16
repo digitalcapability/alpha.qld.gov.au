@@ -103,7 +103,16 @@
                     {% assign competence_terms = competence_terms | push: competence.title | push: competence.id %}
                   {% endif %}
                 {% endfor %}
+                {% assign related_question_terms = "" | split: "," %}
+                {% for related_category in site.data.workplace_questions %}
+                  {% for related_question in related_category.questions %}
+                    {% if question.related_questions contains related_question.id %}
+                      {% assign related_question_terms = related_question_terms | push: related_question.title %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
                 {% assign related_terms = question.keywords | concat: question.synonyms | concat: competence_terms %}
+                {% assign related_terms = related_terms | concat: related_question_terms %}
                 <article class="workplace-question-card"
                   data-id="{{ question.id }}"
                   data-title="{{ question.title | escape }}"
@@ -113,7 +122,7 @@
                   data-keywords="{{ question.keywords | join: ' ' | escape }}"
                   data-synonyms="{{ question.synonyms | join: ' ' | escape }}"
                   data-related="{{ related_terms | join: ' ' | escape }}"
-                  data-resources="Area {{ category.area }} learning resources practical activities"
+                  data-resources="Area {{ category.area }} learning resources practical activities Digital Capability Framework"
                   data-pathways="learning pathways self-paced learning opportunities"
                   data-popular="{{ question.popular | default: false }}">
                   <p class="question-topic">{{ category.title }}</p>
