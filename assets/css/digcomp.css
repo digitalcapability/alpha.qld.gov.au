@@ -607,6 +607,10 @@ main .container,
   align-items: start;
 }
 
+.workplace-related-layout > .workplace-related {
+  grid-column: 2;
+}
+
 .otp-sidebar {
   width: 100%;
   max-width: 16rem;
@@ -1479,6 +1483,10 @@ main .container,
   .otp-layout {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .workplace-related-layout > .workplace-related {
+    grid-column: 1;
   }
 
   .otp-sidebar {
