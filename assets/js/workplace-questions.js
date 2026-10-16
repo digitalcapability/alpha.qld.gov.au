@@ -229,6 +229,9 @@
       document.querySelectorAll(".filter-chip").forEach(function (chip) {
         chip.setAttribute("aria-pressed", String(chip.dataset.filter === activeFilter));
       });
+      document.querySelectorAll(".workplace-topic-card").forEach(function (topic) {
+        topic.setAttribute("aria-pressed", String(topic.dataset.filter === activeFilter));
+      });
       updateResults();
       document.getElementById("results-heading").scrollIntoView({ block: "start" });
     });

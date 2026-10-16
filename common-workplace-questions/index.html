@@ -77,7 +77,7 @@
           <p>Browse common public sector activities and questions. Each topic links to relevant digital competences, resources, tools and learning opportunities.</p>
           <div class="workplace-topic-grid">
             {% for category in site.data.workplace_questions %}
-              <button class="workplace-topic-card" type="button" data-filter="{{ category.id }}">
+              <button class="workplace-topic-card" type="button" data-filter="{{ category.id }}" aria-pressed="false">
                 <span class="workplace-topic-title">{{ category.title }}</span>
                 <span>{{ category.description }}</span>
                 <span class="workplace-topic-count">{{ category.questions.size }} questions</span>

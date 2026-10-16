@@ -1015,7 +1015,8 @@ main .container,
 }
 
 .workplace-topic-card:hover,
-.workplace-topic-card:focus-visible {
+.workplace-topic-card:focus-visible,
+.workplace-topic-card[aria-pressed="true"] {
   border-color: var(--link);
   background: #f3f8ff;
 }
@@ -1416,5 +1417,24 @@ main .container,
 
   .on-this-page summary::after {
     content: '';
+  }
+}
+
+@media (forced-colors: active) {
+  .featured-card,
+  .workplace-search-section,
+  .popular-question-card,
+  .workplace-topic-card,
+  .workplace-question-card,
+  .workplace-detail {
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .filter-chip[aria-pressed="true"],
+  .workplace-topic-card[aria-pressed="true"] {
+    border: 2px solid Highlight;
+    background: Highlight;
+    color: HighlightText;
   }
 }
