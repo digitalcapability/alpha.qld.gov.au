@@ -22,21 +22,13 @@
       </div>
     </header>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      <div class="container">
-        <ul class="nav-list">
-          <li><a href="{{ '/framework/' | relative_url }}">Explore the framework</a></li>
-          <li><a href="{{ '/assessment/' | relative_url }}">Assess your capability</a></li>
-          <li><a href="{{ '/resources/' | relative_url }}">Learning &amp; resources</a></li>
-          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+    {% include navigation.html %}
 
     <main id="main-content">
       <section class="intro-section">
         <div class="container">
+          <h1>Queensland Government digital capability</h1>
+          <p>Build the knowledge, skills and attitudes needed to work confidently, critically, safely and responsibly in a changing digital environment.</p>
           <p class="page-disclaimer">
             <strong>Disclaimer:</strong> The Queensland Government Digital Capability Hub provides guidance and learning resources to support digital capability development across the Queensland public sector workforce.
             Content is provided for information and capability development purposes only and does not replace agency policies, procedures, legislative requirements or official advice.
@@ -154,28 +146,10 @@
         </div>
       </section>
 
-      <section class="steps-section container" id="framework">
-        <h1>Three ways to get started</h1>
-        <p>
-          Explore the knowledge, skills and attitudes that help Queensland public servants work confidently, critically, safely and responsibly in a changing digital environment.
-        </p>
-        <div class="steps-grid">
-          <article class="step-card">
-            <h3>Understand DigComp</h3>
-            <p>Explore the five DigComp 3.0 competence areas and how they apply to Queensland Government work.</p>
-                <a class="button primary" href="{{ '/framework/' | relative_url }}">Explore the framework</a>
-          </article>
-          <article class="step-card">
-            <h3>Assess your capability</h3>
-            <p>Use the assessment approach to reflect on your current strengths and development needs.</p>
-            <a class="button primary" href="{{ '/assessment/' | relative_url }}">Assess your capability</a>
-          </article>
-          <article class="step-card">
-            <h3>Explore learning resources</h3>
-            <p>Find practical guidance and learning pathways that can support your next step.</p>
-            <a class="button primary" href="{{ '/resources/' | relative_url }}">View resources</a>
-          </article>
-        </div>
+      <section class="steps-section container">
+        <h2>Not sure where to begin?</h2>
+        <p>Visit Start here to explore the framework, reflect on your capability or find the competences connected with common workplace needs.</p>
+        <a class="button primary" href="{{ '/start-here/' | relative_url }}">Start here</a>
       </section>
     </main>
 

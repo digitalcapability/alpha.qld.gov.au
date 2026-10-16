@@ -1,0 +1,13 @@
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <ul class="nav-list">
+      <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
+      <li><a href="{{ '/start-here/' | relative_url }}"{% if page.url == '/start-here/' %} aria-current="page"{% endif %}>Start here</a></li>
+      <li><a href="{{ '/framework/' | relative_url }}"{% if page.url == '/framework/' %} aria-current="page"{% endif %}>Explore the framework</a></li>
+      <li><a href="{{ '/assessment/' | relative_url }}"{% if page.url == '/assessment/' %} aria-current="page"{% endif %}>Assess your capability</a></li>
+      <li><a href="{{ '/resources/' | relative_url }}"{% if page.url == '/resources/' %} aria-current="page"{% endif %}>Learning &amp; resources</a></li>
+      <li><a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a></li>
+    </ul>
+  </div>
+</nav>
