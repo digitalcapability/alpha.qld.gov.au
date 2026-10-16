@@ -1,0 +1,128 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Common Workplace Questions | Queensland Government Digital Capability Hub</title>
+    <meta name="description" content="Explore common public sector workplace questions and find related digital competences, practical guidance and learning resources.">
+    <link rel="stylesheet" href="{{ '/assets/css/digcomp.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="qg-header">
+      <div class="container header-content">
+        <a class="site-logo" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/qg-coa-opt-c-1l-web-white.svg' | relative_url }}" alt="Queensland Government Coat of Arms">
+        </a>
+        <div class="site-title">Digital Capability Hub</div>
+      </div>
+    </header>
+
+    {% include navigation.html %}
+
+    <main id="main-content">
+      <div class="container">
+        <section class="content-panel">
+          <h1>Common Workplace Questions</h1>
+          <p>Explore common workplace tasks and activities to discover relevant digital competences, practical guidance and learning resources.</p>
+          <p>Start with what you're trying to achieve and we'll help connect you with the most relevant capability areas.</p>
+        </section>
+
+        <section class="steps-section" aria-labelledby="topic-heading">
+          <h2 id="topic-heading">Choose a workplace topic</h2>
+          <p>Browse common public sector activities and questions. Each topic links to relevant digital competences, resources, tools and learning opportunities.</p>
+          <nav class="workplace-topic-nav" aria-label="Workplace topics">
+            {% for category in site.data.workplace_questions %}
+              <a class="workplace-topic-link" href="#{{ category.id }}">{{ category.title }}</a>
+            {% endfor %}
+          </nav>
+        </section>
+
+        {% for category in site.data.workplace_questions %}
+          <section class="workplace-category" id="{{ category.id }}" aria-labelledby="{{ category.id }}-heading">
+            <h2 id="{{ category.id }}-heading">{{ category.title }}</h2>
+            <div class="card-grid">
+              {% for question in category.questions %}
+                <article class="workplace-question" id="{{ question.id }}">
+                  <h3>{{ question.title }}</h3>
+                  <h4>Overview</h4>
+                  <p>{{ question.overview }}</p>
+
+                  <h4>Related competences</h4>
+                  <ul class="competence-tags">
+                    {% for competence_id in question.competences %}
+                      {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
+                      {% if competence %}
+                        <li><a class="competence-tag" href="{{ '/framework/area-' | append: competence.area | append: '/#competence-' | append: competence.id | replace: '.', '-' | relative_url }}">{{ competence.id }} {{ competence.title }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+
+                  <h4>Related resources</h4>
+                  <p>Use the competence guidance, practical activities and tools for this topic.</p>
+                  <div class="question-links">
+                    {% assign resource_areas = "" | split: "," %}
+                    {% for competence_id in question.competences %}
+                      {% assign competence = site.data.digcomp_competences | where: "id", competence_id | first %}
+                      {% if competence %}
+                        {% assign resource_areas = resource_areas | push: competence.area %}
+                      {% endif %}
+                    {% endfor %}
+                    {% assign resource_areas = resource_areas | uniq %}
+                    {% for area in resource_areas %}
+                      <a href="{{ '/framework/area-' | append: area | append: '/#learning-resources' | relative_url }}">Area {{ area }} resources</a>
+                    {% endfor %}
+                  </div>
+
+                  <h4>Learning opportunities</h4>
+                  <p>Explore self-paced resources, practical activities and public sector learning opportunities.</p>
+                  <div class="question-links">
+                    <a href="{{ '/resources/' | relative_url }}">Learning pathways and resources</a>
+                    {% assign first_competence_id = question.competences | first %}
+                    {% assign first_competence = site.data.digcomp_competences | where: "id", first_competence_id | first %}
+                    {% if first_competence %}
+                      <a href="{{ '/framework/area-' | append: first_competence.area | append: '/#learning-resources' | relative_url }}">Area {{ first_competence.area }} learning activities</a>
+                    {% endif %}
+                  </div>
+
+                  <h4>Suggested next steps</h4>
+                  <p>Choose a competence above to read its guidance, then try a related activity or learning resource.</p>
+                </article>
+              {% endfor %}
+            </div>
+          </section>
+        {% endfor %}
+
+        <section class="content-panel">
+          <h2>Explore the framework</h2>
+          <p>Follow the competence links to explore capability areas in more detail, or browse learning resources for practical ways to build your skills.</p>
+          <div class="button-row">
+            <a class="button primary" href="{{ '/framework/' | relative_url }}">Explore the framework</a>
+            <a class="button secondary" href="{{ '/resources/' | relative_url }}">Browse learning and resources</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div>
+          <strong>Queensland Government Digital Capability Hub</strong>
+          <p>Supporting workforce capability through evidence-based guidance and practical development.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links">
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/framework/' | relative_url }}">Explore the framework</a></li>
+            <li><a href="{{ '/assessment/' | relative_url }}">Assess your capability</a></li>
+            <li><a href="{{ '/resources/' | relative_url }}">Learning &amp; resources</a></li>
+            <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
