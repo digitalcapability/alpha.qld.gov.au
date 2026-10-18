@@ -14,7 +14,7 @@
       keywords: 'framework digcomp capability areas overview'
     },
     {
-      title: '1. Information search, evaluation and management',
+      title: '1. Information and data literacy',
       url: '/framework/area-1/',
       description: 'Find, assess, organise and manage digital information.',
       keywords: 'information search evaluation management'
@@ -26,19 +26,19 @@
       keywords: 'communication collaboration teamwork'
     },
     {
-      title: '3. Content creation',
+      title: '3. Digital content creation',
       url: '/framework/area-3/',
       description: 'Create and adapt digital content for Queensland Government work.',
       keywords: 'content creation digital content'
     },
     {
-      title: '4. Safety, wellbeing and responsible use',
+      title: '4. Safety',
       url: '/framework/area-4/',
       description: 'Use digital tools safely, responsibly and with care for wellbeing.',
       keywords: 'safety wellbeing responsible use cybersecurity'
     },
     {
-      title: '5. Problem identification and solving',
+      title: '5. Problem solving',
       url: '/framework/area-5/',
       description: 'Identify digital problems and choose practical ways to solve them.',
       keywords: 'problem solving digital solutions'
