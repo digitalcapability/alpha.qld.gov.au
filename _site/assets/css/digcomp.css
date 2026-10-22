@@ -626,6 +626,18 @@ main .container,
   margin-bottom: 1.5rem;
 }
 
+.area-banner {
+  margin: 1.5rem auto;
+  overflow: hidden;
+}
+
+.area-banner img {
+  width: 100%;
+  height: clamp(7rem, 12vw, 10rem);
+  object-fit: cover;
+  object-position: 68% center;
+}
+
 .otp-layout {
   display: grid;
   grid-template-columns: minmax(14rem, 16rem) minmax(0, 1fr);
