@@ -302,12 +302,12 @@ main .container,
 }
 
 .homepage-tagline {
-  position: absolute;
-  top: 50%;
-  left: 4%;
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: start;
   width: min(43%, 28rem);
-  margin: 0;
-  transform: translateY(-50%);
+  margin: 0 0 0 4%;
+  z-index: 1;
   color: var(--heading);
   font-size: clamp(1rem, 2vw, 1.65rem);
   font-weight: 700;
@@ -316,12 +316,13 @@ main .container,
 }
 
 .homepage-banner {
-  position: relative;
+  display: grid;
   margin: 2rem auto 0;
   overflow: hidden;
 }
 
 .homepage-banner img {
+  grid-area: 1 / 1;
   width: 100%;
   height: auto;
 }
