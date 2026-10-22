@@ -302,28 +302,36 @@ main .container,
 }
 
 .homepage-tagline {
-  max-width: 48rem;
-  margin: 1.25rem auto 0;
-  color: #24394c;
-  font-size: clamp(1.2rem, 2.5vw, 1.65rem);
-  line-height: 1.45;
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  width: min(43%, 28rem);
+  margin: 0;
+  transform: translateY(-50%);
+  color: var(--heading);
+  font-size: clamp(1rem, 2vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
 }
 
 .homepage-banner {
-  display: grid;
-  min-height: 18rem;
-  place-items: center;
+  position: relative;
   margin: 2rem auto 0;
   overflow: hidden;
-  border-block: 0.25rem solid #246b68;
-  background: linear-gradient(110deg, #dcefeb 0%, #f7f7f7 52%, #f8e9df 100%);
 }
 
 .homepage-banner img {
-  width: min(100%, 18rem);
-  max-height: 18rem;
-  object-fit: contain;
-  mix-blend-mode: multiply;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 30rem) {
+  .homepage-tagline {
+    width: 44%;
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
 }
 
 .homepage-actions {
