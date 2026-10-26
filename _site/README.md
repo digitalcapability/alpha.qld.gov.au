@@ -19,14 +19,14 @@ sudo bundle install
 bundle exec jekyll serve --livereload
 ```
 
-Then open the local preview at `http://127.0.0.1:4000/alpha.qld.gov.au/`.
+Then open the local preview at `http://127.0.0.1:4000/digitalcapability/`.
 
 ## GitHub Pages
 
 This site is configured for GitHub Pages with:
 
 - `url: "https://qld-gov-au.github.io"`
-- `baseurl: "digitalcapability"`
+- `baseurl: "/digitalcapability"`
 
 All asset, image and internal links use `relative_url` to work on both local preview and GitHub Pages.
 
