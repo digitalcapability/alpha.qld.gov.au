@@ -448,7 +448,8 @@
       entries.push(createEntry(label, id, 2));
     });
 
-    var includeH3 = !main.querySelector(".accordion-item") && !frameworkOverview;
+    var includeH3 = main.getAttribute("data-on-this-page-headings") !== "h2" &&
+      !main.querySelector(".accordion-item") && !frameworkOverview;
     if (includeH3) {
       var h3s = Array.prototype.slice.call(main.querySelectorAll("h3"));
       h3s.forEach(function (h3) {
