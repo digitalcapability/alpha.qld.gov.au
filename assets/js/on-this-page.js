@@ -455,6 +455,7 @@
       h3s.forEach(function (h3) {
         if (h3.closest(".on-this-page")) return;
         if (h3.closest("details")) return;
+        if (h3.hasAttribute("data-on-this-page-ignore")) return;
 
         var label = (h3.textContent || "").trim();
         if (!label || label === "Competences") return;
