@@ -910,7 +910,7 @@ main .container,
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1546,7 +1546,7 @@ main .container,
   }
 
   .steps-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .homepage-actions {
@@ -1559,6 +1559,10 @@ main .container,
 }
 
 @media (max-width: 520px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
   .homepage-actions {
     grid-template-columns: 1fr;
   }
